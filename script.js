@@ -86,3 +86,4 @@ document.querySelector('.again').addEventListener('click', function ()
     bodyColor('#222');
     width('15rem');
 })
+
