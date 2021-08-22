@@ -5,7 +5,25 @@ let score = 20;
 let highScore = 0;
 let magicNumber = Math.trunc(Math.random() * 20) + 1;
 
+const displayMessage = function (message)
+{
+    document.querySelector('.message').textContent = message;
+}
 
+const bodyColor = function (color)
+{
+    document.querySelector('body').style.backgroundColor = color;
+}
+
+const scoreMessage = function (score)
+{
+    document.querySelector('.score').textContent = score;
+}
+
+const width = function (num)
+{
+    document.querySelector('.number').style.width = num;
+}
 
 document.querySelector('.check').addEventListener('click', function ()
 {
@@ -16,14 +34,14 @@ document.querySelector('.check').addEventListener('click', function ()
     {
         if (!guess && guess !== 0)
         {
-            document.querySelector('.message').textContent = '⛔No Number';
+            displayMessage('⛔No Number');
         }
         else if (guess === magicNumber)
         {
-            document.querySelector('.message').textContent = '🎉Correct Number';
+            displayMessage('🎉Correct Number');
 
-            document.querySelector('body').style.backgroundColor = '#32CD32'
-            document.querySelector('.number').style.width = '30rem';
+            bodyColor('#32CD32');
+           width('30rem');
 
             if (score > highScore)
             {
@@ -33,28 +51,28 @@ document.querySelector('.check').addEventListener('click', function ()
         }
         else if (guess > magicNumber && guess <= 20)
         {
-            document.querySelector('.message').textContent = '📈Too High';
+            displayMessage('📈Too High');
             score--;
-            document.querySelector('.score').textContent = score;
+            scoreMessage(score);
         }
         else if (guess < magicNumber && guess >= 0)
         {
-            document.querySelector('.message').textContent = '📉Too Low';
+            displayMessage('📉Too Low');
             score--;
-            document.querySelector('.score').textContent = score;
+            scoreMessage(score);
         }
         else if (guess < 0 || guess > 20)
         {
-            document.querySelector('.message').textContent = '😒Input Numbers between 0 and 20 only';
+           displayMessage('😒Input Numbers between 0 and 20 only');
         }
     }
     else
     {
-        document.querySelector('.message').textContent = '💥You lost the Game!!!';
+        displayMessage('💥You lost the Game!!!');
         score = 0;
-        document.querySelector('.score').textContent = 0;
-        document.querySelector('body').style.backgroundColor = '	#ff0000'
-        document.querySelector('.number').style.width = '30rem';
+        scoreMessage(0);
+        bodyColor('#ff0000');
+        width('30rem');
     }
 })
 
@@ -62,9 +80,9 @@ document.querySelector('.again').addEventListener('click', function ()
 {
     score = 20;
     magicNumber = Math.trunc(Math.random() * 20) + 1;
-    document.querySelector('.message').textContent = 'Start guessing...';
-    document.querySelector('.score').textContent = 20;
+    displayMessage('Start guessing...');
+    scoreMessage(20);
     document.querySelector('.guess').value = '';
-    document.querySelector('body').style.backgroundColor = '#222';
-    document.querySelector('.number').style.width = '15rem';
+    bodyColor('#222');
+    width('15rem');
 })
