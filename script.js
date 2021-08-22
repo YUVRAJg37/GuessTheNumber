@@ -1,9 +1,9 @@
 'use strict';
 
-let score = 20;
+let score = 100;
 
 let highScore = 0;
-let magicNumber = Math.trunc(Math.random() * 20) + 1;
+let magicNumber = Math.trunc(Math.random() * 1000) + 1;
 
 const displayMessage = function (message)
 {
